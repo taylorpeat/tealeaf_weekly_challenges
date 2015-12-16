@@ -1,17 +1,11 @@
 class Octal
-  attr_accessor :oct_num
+  attr_reader :oct_arr
 
   def initialize(oct_num)
-    @oct_num = oct_num.chars
+    @oct_arr = oct_num.chars.all? { |x| /[0-7]/ === x } ? oct_num.chars.map { |num| num.to_i } : [0]
   end
 
   def to_decimal
-    if oct_num.all? { |x| /[0-7]/ === x }
-      oct_arr = oct_num.map { |num| num.to_i }.reverse
-      oct_arr.each_with_index {|num, idx| oct_arr[idx] = num * 8**(idx) }
-      oct_arr.inject(:+)
-    else
-      0
-    end
+    oct_arr.inject(0) {|memo, num| (memo + num) * 8 } / 8
   end
 end
