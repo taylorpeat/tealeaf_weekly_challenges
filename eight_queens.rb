@@ -16,7 +16,7 @@ def find_queen_positions
       queen_attacks << [queen_spot[0] - i, queen_spot[1] + i]
     end
     queen_attacks += [queen_spot[0]].product(NUMBERS)
-    queen_attacks += [queen_spot[1]].product(NUMBERS)
+    queen_attacks += NUMBERS.product([queen_spot[1]])
     board -= queen_attacks
   end
   p queen_spots
