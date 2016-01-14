@@ -306,7 +306,8 @@ class Table
   include BoardConstants
   include Shippable
 
-  attr_accessor :human_board, :computer_board, :human_name, :flash_board, :flash_regex, :flash_on, :flash_player
+  attr_accessor :human_board, :computer_board, :human_name,
+                :flash_board, :flash_regex, :flash_on, :flash_player
 
   def initialize(name)
     @human_board = initialize_board
@@ -347,8 +348,9 @@ class Table
   def print_top_of_board
     puts
     puts "-" * 70 + "BATTLESHIP!" + "-" * 70 + "\n\n"
-    puts "   " + " " * (30 - "#{human_name.upcase}'S BOARD".length / 2) + "#{human_name.upcase}'S BOARD" + " " *
-         (31 - "#{human_name.upcase}'S BOARD".length / 2) + BOARD_SPACING + " " * 25 + "COMPUTER'S BOARD" + "\n\n"
+    puts "   " + " " * (30 - "#{human_name.upcase}'S BOARD".length / 2) +
+         "#{human_name.upcase}'S BOARD" + " " * (31 - "#{human_name.upcase}'S BOARD".length / 2) +
+         BOARD_SPACING + " " * 25 + "COMPUTER'S BOARD" + "\n\n"
     puts TOP_GRIDLINES + BOARD_SPACING + TOP_GRIDLINES
     puts FIRST_LINE + BOARD_SPACING + FIRST_LINE
   end
