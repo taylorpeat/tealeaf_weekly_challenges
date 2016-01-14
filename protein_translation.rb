@@ -10,7 +10,7 @@ class Translation
   def self.of_rna(strand)
     strand.slice(0..8).scan(/.{3}/).take_while { |codon| !PROTEIN_CODON["STOP"].include?(codon) }.map do |codon|
       raise InvalidCodonError unless PROTEIN_CODON.values.flatten.include?(codon)
-      self.of_codon(codon)
+      of_codon(codon)
     end
   end
 end
