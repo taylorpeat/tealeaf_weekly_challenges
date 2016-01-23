@@ -1,7 +1,12 @@
 class Translation
-  PROTEIN_CODON = { "Methionine" => ["AUG"], "Phenylalanine" => ["UUU", "UUC"], "Leucine" => ["UUA", "UUG"],
-                    "Serine" => ["UCU", "UCC", "UCA", "UCG"], "Tyrosine" => ["UAU", "UAC"],
-                    "Cysteine" => ["UGU", "UGC"], "Tryptophan" => ["UGG"], "STOP" => ["UAA", "UAG", "UGA"]}
+  PROTEIN_CODON = { "Methionine" => ["AUG"],
+                    "Phenylalanine" => ["UUU", "UUC"],
+                    "Leucine" => ["UUA", "UUG"],
+                    "Serine" => ["UCU", "UCC", "UCA", "UCG"],
+                    "Tyrosine" => ["UAU", "UAC"],
+                    "Cysteine" => ["UGU", "UGC"],
+                    "Tryptophan" => ["UGG"],
+                    "STOP" => ["UAA", "UAG", "UGA"]}
 
   def self.of_codon(codon)
     PROTEIN_CODON.select { |protein, codons| codons.include?(codon) }.keys.first
