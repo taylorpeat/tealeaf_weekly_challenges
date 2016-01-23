@@ -20,8 +20,8 @@ class CircularBuffer
   end
 
   def write(value)
+    raise BufferFullException if buffer.size >= buffer_max
     add_value_to_buffer(value)
-    raise BufferFullException if buffer.size > buffer_max
   end
 
   def write!(value)
