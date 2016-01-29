@@ -1,10 +1,7 @@
 class CircularBuffer
 
-  class BufferEmptyException < StandardError
-  end
-
-  class BufferFullException < StandardError
-  end
+  class BufferEmptyException < StandardError; end
+  class BufferFullException < StandardError; end
   
   attr_accessor :buffer
   attr_reader :buffer_max
