@@ -1,19 +1,19 @@
 class School
-  attr_accessor :school
+  attr_reader :roster
 
   def initialize
-    @school = {}
+    @roster = Hash.new([])
   end
 
   def add(name, grade_num)
-    school[grade_num] ? (school[grade_num] << name).sort! : school[grade_num] = [name]
+    (roster[grade_num] += [name]).sort!
   end
 
   def to_h
-    school.sort_by { |grade, names| grade }.to_h
+    roster.sort.to_h
   end
 
   def grade(grade_num)
-    school[grade_num] || []
+    roster[grade_num] || []
   end
 end
