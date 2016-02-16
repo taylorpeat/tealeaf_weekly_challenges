@@ -25,7 +25,7 @@ class Meetup
     when :fourth then 22
     when :teenth then FIRST_TEENTH
     when :last
-      days_in_month = Date.new(year, month).next_month - Date.new(year, month) - 6
+      days_in_month = Date.new(year, month).next_month.prev_day.day - 6
     end
   end
 
