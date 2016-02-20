@@ -7,16 +7,13 @@ class PhoneNumber
   end
 
   def number
-    /[a-zA-z]/.match(num) ? BLANK_NUM : formatted_number
+    /[a-zA-z]/.match(num) ? num.replace(BLANK_NUM) : formatted_number
   end
 
   def formatted_number
     num.gsub!(/\D/, "")
-    if [10,11].include?(num.length)
-      num.replace num[1..10] if num.length == 11 && num[0] == "1"
-      return num if num.length == 10
-    end
-    return BLANK_NUM
+    num.sub!(/^1(?=\d{10})/, "")
+    num.length == 10 ? num : num.replace(BLANK_NUM)
   end
 
   def area_code
