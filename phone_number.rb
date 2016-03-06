@@ -22,6 +22,6 @@ class PhoneNumber
 
   def to_s
     number
-    "(#{num.slice(0..2)}) #{num.slice(3..5)}-#{num.slice(6..9)}"
+    "(#{num[0..2]}) #{num[3..5]}-#{num[6..9]}"
   end
 end
