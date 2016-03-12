@@ -1,7 +1,7 @@
 class Palindromes
   attr_reader :max, :min
 
-   Single_Palindrome = Struct.new(:value, :factors)
+  Single_Palindrome = Struct.new(:value, :factors)
 
   def initialize(max_factor:, min_factor: 1)
     @max = max_factor
