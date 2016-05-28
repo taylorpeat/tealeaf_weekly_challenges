@@ -1,7 +1,7 @@
 class Phrase
 
   def initialize(phrase)
-    @words = phrase.gsub(/[^\w\s',]/, "").downcase.split(/'?\s+'?|,\s?/)
+    @words = phrase.downcase.scan(/\w+'?\w+|\d+/)
   end
 
   def word_count
