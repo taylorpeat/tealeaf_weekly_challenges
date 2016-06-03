@@ -1,19 +1,18 @@
 class House
-  @@prototype ||= House.new
 
   def self.recite
-    unused_verses = @@prototype.get_pieces
+    @@song ||= House.new.recite
+  end
+
+  def recite
+    unused_verses = pieces
     unused_verses.last[0] << "."
     build_song(unused_verses)
   end
 
-  def get_pieces
-    pieces
-  end
-
   private
   
-  def self.build_song(unused_verses, verses: [], song: "")
+  def build_song(unused_verses, verses: [], song: "")
     while unused_verses != [] do
       verses.unshift(unused_verses.pop)
       song += build_verse(verses)
@@ -21,16 +20,16 @@ class House
     song.chop
   end
 
-  def self.build_verse(verses, verse: "")
+  def build_verse(verses, verse: "")
     verses.length.times { |idx| verse += build_line(verses, idx) }
     verse + "\n"
   end
 
-  def self.build_line(verses, idx)
+  def build_line(verses, idx)
     line = idx == 0 ? "This is" : verses[idx - 1][1]
     line + " " + verses[idx][0] + "\n"
   end
-  
+
   def pieces
     [
       ['the horse and the hound and the horn', 'that belonged to'],
