@@ -1,23 +1,23 @@
 class House
 
   def self.recite
-    @@song ||= House.new.recite
+    @@rhyme ||= House.new.recite
   end
 
   def recite
     unused_verses = pieces
     unused_verses.last[0] << "."
-    build_song(unused_verses)
+    build_rhyme(unused_verses)
   end
 
   private
   
-  def build_song(unused_verses, verses: [], song: "")
+  def build_rhyme(unused_verses, verses: [], rhyme: "")
     while unused_verses != [] do
       verses.unshift(unused_verses.pop)
-      song += build_verse(verses)
+      rhyme += build_verse(verses)
     end
-    song.chop
+    rhyme.chop
   end
 
   def build_verse(verses, verse: "")
