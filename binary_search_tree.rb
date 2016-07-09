@@ -5,15 +5,11 @@ class Bst
     @data = num
   end
 
-  def insert(new_num)
-    assign_number(self, new_num)
-  end
-
-  def assign_number(tree, new_num)
+  def insert(new_num, tree=self)
     if new_num > tree.data
-      tree.right ? assign_number(tree.right, new_num) : (tree.right = Bst.new new_num)
+      tree.right ? insert(new_num, tree.right) : (tree.right = Bst.new new_num)
     else
-      tree.left ? assign_number(tree.left, new_num) : (tree.left = Bst.new new_num)
+      tree.left ? insert(new_num, tree.left) : (tree.left = Bst.new new_num)
     end
   end
 
@@ -29,5 +25,4 @@ class Bst
     tree_numbers += find_tree_numbers(bst.right) if bst.right
     tree_numbers
   end
-
 end
