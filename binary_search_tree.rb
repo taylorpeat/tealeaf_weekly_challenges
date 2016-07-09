@@ -17,16 +17,16 @@ class Bst
     end
   end
 
-  def check_number(bst)
+  def find_tree_numbers(bst)
     lower_numbers = []
-    lower_numbers += check_number(bst.left) if bst.left
+    lower_numbers += find_tree_numbers(bst.left) if bst.left
     lower_numbers << bst.data
-    lower_numbers += check_number(bst.right) if bst.right
+    lower_numbers += find_tree_numbers(bst.right) if bst.right
     lower_numbers
   end
 
   def each
     return to_enum(:each) unless block_given?
-    check_number(self).each { |num| yield num }
+    find_tree_numbers(self).each { |num| yield num }
   end
 end
