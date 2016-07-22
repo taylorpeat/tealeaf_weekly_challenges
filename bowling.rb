@@ -18,7 +18,7 @@ class Game
   end
 
   def score
-    raise unfinished_error_message unless game_finished?
+    raise unfinished_game_error_message unless game_finished?
     rounds.slice(0, ROUNDS).reduce(0) { |total, round| total + round.total }
   end
 
@@ -31,7 +31,7 @@ class Game
     rounds[ROUNDS - 1]&.status == :finished
   end
 
-  def unfinished_error_message
+  def unfinished_game_error_message
     return 'Game is not yet over, cannot score!' if @rounds[ROUNDS - 1]&.status == :xtra_balls
     'Score cannot be taken until the end of the game'
   end
